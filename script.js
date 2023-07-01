@@ -26,7 +26,7 @@ if (!((x == "rock") || (x == 'paper') || (x == 'scissors'))) {
 */
 
 function getPlayerChoice() {
-    let x = prompt(`Do you choose rock, paper, or scissors?`);
+    let x = prompt(`Round ${round}! Do you choose rock, paper, or scissors?`);
     if (typeof(x) != "string") {
         alert(`Nice try, bozo. Enter one of the things I asked.`);
         x = getPlayerChoice();
@@ -78,39 +78,30 @@ function playRound(playerSelection, computerSelection) {
 };
 
 //This will be the Game function that plays a 5 round game, keeping score. Then reporting a winner or loser at the end.
+let yourPoints = 0;
+let theirPoints = 0;
 
-/*
-
-for (i = 0; i < 5; i++) {
+for (round = 1; round < 6; round++) {
     let playerSelection = getPlayerChoice();
-   // INSERT THE GAME LOOP HERE
     let computerSelection = getComputerChoice();
     let result = playRound(playerSelection,computerSelection);
     if (result == 'tie') {
-        console.log(`It was a tie! You both chose ${playerSelection}!`)
-    }
-    if (result == 'win') {
-        console.log(`You win; ${playerSelection} beats ${computerSelection}!`)
-    }
-    if (result == 'lose') {
-        console.log(`You lose; ${computerSelection} beats ${playerSelection}!`)
-    }
-}
-*/
+        console.log(`It was a tie! You both chose ${playerSelection}!`);
+    } else if (result == 'win') {
+        console.log(`You win; ${playerSelection} beats ${computerSelection}!`);
+        yourPoints ++;
+    } else if (result == 'lose') {
+            console.log(`You lose; ${computerSelection} beats ${playerSelection}!`);
+            theirPoints ++;
+    } else {
+        console.log(`Something went wrong :(`);
+    };
+};
 
-
-let playerSelection = getPlayerChoice();
-console.log(playerSelection);
-let computerSelection = getComputerChoice();
-console.log(computerSelection);
-let result = playRound(playerSelection,computerSelection);
-console.log(result);
-if (result == 'tie') {
-    console.log(`It was a tie! You both chose ${playerSelection}!`);
-} else if (result == 'win') {
-    console.log(`You win; ${playerSelection} beats ${computerSelection}!`);
-} else if (result == 'lose') {
-        console.log(`You lose; ${computerSelection} beats ${playerSelection}!`);
+if (yourPoints > theirPoints) {
+    console.log(`You won, ${yourPoints} to ${theirPoints}!`)
+} else if (theirPoints > yourPoints) {
+    console.log(`The computer won, ${theirPoints} to ${yourPoints}! Better luck next time!`)
 } else {
-    console.log(`Something went wrong :(`);
+    console.log(`It was a tie, ${yourPoints} to ${theirPoints}!`)
 };
