@@ -7,7 +7,8 @@ function getComputerChoice() {
     return x;
 };
 
-
+/*
+//This WORKS. Now put it in a function and just get it to repeat itself in the places where there's currently a "redo" message.
 let x = prompt(`Do you choose rock, paper, or scissors?`);
 if (typeof(x) != "string") {
     alert(`Nice try, bozo. Enter one of the things I asked.`);
@@ -22,8 +23,26 @@ if (!((x == "rock") || (x == 'paper') || (x == 'scissors'))) {
 } else {
     console.log(x);
 };
+*/
 
-
+function getPlayerChoice() {
+    let x = prompt(`Do you choose rock, paper, or scissors?`);
+    if (typeof(x) != "string") {
+        alert(`Nice try, bozo. Enter one of the things I asked.`);
+        x = getPlayerChoice();
+        return x;
+    } else {
+        x = x.toLowerCase();
+    };
+    if (!((x == "rock") || (x == 'paper') || (x == 'scissors'))) {
+        alert('Bro, you gotta enter one of those three options');
+        x = getPlayerChoice();
+        return x;
+    } else {
+        alert(x);
+        return x;
+    };
+};
 
 //This will be a function that plays a single round of Rock Paper Scissors. The function will take two parameters, the playerSelection and the computerSelection, and then return a string declaring the winner of the game like "You lose! Paper beats Rock!" or whatever. Make your playerSelection parameter case insensitive
 // This function is done. It'll return 'tie', 'lose', or 'win' based on the playerSelection and the computerSelection
@@ -37,8 +56,7 @@ function playRound(playerSelection, computerSelection) {
             return `win`;
         } else {console.log('Rock Glitch');
         };
-    }
-    if (playerSelection == 'paper') {
+    } else if (playerSelection == 'paper') {
         if (computerSelection == 'paper') {
             return `tie`;
         } else if (computerSelection == 'scissors') {
@@ -47,8 +65,7 @@ function playRound(playerSelection, computerSelection) {
             return `win`;
         } else {console.log('Paper Glitch');
         };
-    }
-    if (playerSelection == 'scissors') {
+    } else if (playerSelection == 'scissors') {
         if (computerSelection == 'scissors') {
             return `tie`;
         } else if (computerSelection == 'rock') {
@@ -81,11 +98,13 @@ for (i = 0; i < 5; i++) {
 }
 */
 
-/*
+
 let playerSelection = getPlayerChoice();
+console.log(playerSelection);
 let computerSelection = getComputerChoice();
 console.log(computerSelection);
 let result = playRound(playerSelection,computerSelection);
+console.log(result);
 if (result == 'tie') {
     console.log(`It was a tie! You both chose ${playerSelection}!`);
 } else if (result == 'win') {
@@ -95,5 +114,3 @@ if (result == 'tie') {
 } else {
     console.log(`Something went wrong :(`);
 };
-
-*/
