@@ -81,6 +81,7 @@ function playRound(playerSelection, computerSelection) {
 let yourPoints = 0;
 let theirPoints = 0;
 
+let round = 0;
 // for (round = 1; round < 6; round++) {
     let playerSelection = getPlayerChoice();
     let computerSelection = getComputerChoice();
