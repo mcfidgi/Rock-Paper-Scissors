@@ -81,7 +81,7 @@ function playRound(playerSelection, computerSelection) {
 let yourPoints = 0;
 let theirPoints = 0;
 
-for (round = 1; round < 6; round++) {
+// for (round = 1; round < 6; round++) {
     let playerSelection = getPlayerChoice();
     let computerSelection = getComputerChoice();
     let result = playRound(playerSelection,computerSelection);
@@ -96,7 +96,7 @@ for (round = 1; round < 6; round++) {
     } else {
         console.log(`Something went wrong :(`);
     };
-};
+// };
 
 if (yourPoints > theirPoints) {
     console.log(`You won, ${yourPoints} to ${theirPoints}!`)
