@@ -24,9 +24,27 @@ if (!((x == "rock") || (x == 'paper') || (x == 'scissors'))) {
     console.log(x);
 };
 */
+const rockButton = document.querySelector('#rock');
+const paperButton = document.querySelector('#paper');
+const scissorsButton = document.querySelector('#scissors');
+// Interesting find: event listeners need to RETURN a function, if you have the actual function in the elemtnts of the eventlistener func, then it'll just execute them.
+rockButton.addEventListener("click", function(){
+    startRound('rock');
+});
+paperButton.addEventListener("click", function(){
+    startRound('paper');
+});
+scissorsButton.addEventListener("click", function(){
+    startRound('scissors');
+});
 
+function startRound(choice) {
+    alert(choice);
+}
+
+/*
 function getPlayerChoice() {
-    let x = prompt(`Round ${round}! Do you choose rock, paper, or scissors?`);
+    let x = prompt(`Round! Do you choose rock, paper, or scissors?`);
     if (typeof(x) != "string") {
         alert(`Nice try, bozo. Enter one of the things I asked.`);
         x = getPlayerChoice();
@@ -43,6 +61,7 @@ function getPlayerChoice() {
         return x;
     };
 };
+*/
 
 //This will be a function that plays a single round of Rock Paper Scissors. The function will take two parameters, the playerSelection and the computerSelection, and then return a string declaring the winner of the game like "You lose! Paper beats Rock!" or whatever. Make your playerSelection parameter case insensitive
 // This function is done. It'll return 'tie', 'lose', or 'win' based on the playerSelection and the computerSelection
