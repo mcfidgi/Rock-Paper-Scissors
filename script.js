@@ -27,6 +27,10 @@ if (!((x == "rock") || (x == 'paper') || (x == 'scissors'))) {
 const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
+const computerChoiceSection = document.querySelector('#ComputerChoice');
+const results = document.querySelector('#Results');
+
+
 // Interesting find: event listeners need to RETURN a function, if you have the actual function in the elemtnts of the eventlistener func, then it'll just execute them.
 rockButton.addEventListener("click", function(){
     startRound('rock');
@@ -39,7 +43,22 @@ scissorsButton.addEventListener("click", function(){
 });
 
 function startRound(choice) {
-    alert(choice);
+    let playerSelection = choice;
+    let computerSelection = getComputerChoice();
+    let result = playRound(playerSelection,computerSelection);
+    //Print "The computer chose computerChoice!"
+    computerChoiceSection.textContent = `You chose ${playerSelection}! The computer chose ${computerSelection}!`;
+    if (result == 'tie') {
+        results.textContent = `It was a tie! You both chose ${playerSelection}!`;
+    } else if (result == 'win') {
+        results.textContent = `You win; ${playerSelection} beats ${computerSelection}!`;
+        yourPoints ++;
+    } else if (result == 'lose') {
+        results.textContent = `You lose; ${computerSelection} beats ${playerSelection}!`;
+        theirPoints ++;
+    } else {
+        console.log(`Something went wrong :(`);
+    };
 }
 
 /*
@@ -101,7 +120,7 @@ let yourPoints = 0;
 let theirPoints = 0;
 
 let round = 0;
-// for (round = 1; round < 6; round++) {
+/* for (round = 1; round < 6; round++) {
     let playerSelection = getPlayerChoice();
     let computerSelection = getComputerChoice();
     let result = playRound(playerSelection,computerSelection);
@@ -124,4 +143,4 @@ if (yourPoints > theirPoints) {
     console.log(`The computer won, ${theirPoints} to ${yourPoints}! Better luck next time!`)
 } else {
     console.log(`It was a tie, ${yourPoints} to ${theirPoints}!`)
-};
+};  */
